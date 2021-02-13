@@ -1,0 +1,32 @@
+{
+  "name": "chuck-norris-jokes-app",
+  "version": "1.0.0",
+  "description": "An app to fetch Chuck Norris Jokes",
+  "main": "index.js",
+  "author": "Valentijn Kap",
+  "license": "ISC",
+  "scripts": {
+    "dev": "npm run development",
+    "development": "cross-env NODE_ENV=development ./node_modules/webpack/bin/webpack.js --progress --hide-modules --config=./node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "npm run development -- --watch",
+    "watch-poll": "npm run watch -- --watch-poll",
+    "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "prod": "npm run production",
+    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.26.7",
+    "browser-sync-webpack-plugin": "^2.0.1",
+    "cross-env": "^6.0.3",
+    "laravel-mix": "^5.0.5",
+    "laravel-mix-purgecss": "^4.2.0",
+    "laravel-mix-string-replace": "^0.1.0",
+    "postcss-css-variables": "^0.14.0",
+    "resolve-url-loader": "^3.1.0",
+    "sass": "^1.32.4",
+    "sass-loader": "^8.0.0",
+    "string-replace-loader": "^2.3.0",
+    "vue-template-compiler": "^2.6.12"
+  },
+  "dependencies": {}
+}
