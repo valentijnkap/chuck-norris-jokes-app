@@ -180,6 +180,23 @@ button:focus {
   }
 }
 
+.card__search {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  max-width: 40rem;
+  margin: 0 auto;
+  font-family: "Work Sans", sans-serif;
+  font-size: 1.6rem;
+  color: #5a5a5a;
+}
+.card__search img {
+  width: 6rem;
+  margin-bottom: 2rem;
+}
+
 .header {
   display: flex;
   align-items: center;

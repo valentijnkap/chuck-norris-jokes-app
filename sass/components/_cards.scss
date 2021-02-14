@@ -25,3 +25,17 @@
     overflow: scroll;
   }
 }
+
+.card__search {
+  @include flex($direction: column, $justify: center, $align: center);
+  width: 90%;
+  max-width: 40rem;
+  margin: 0 auto;
+  @include font('work-sans', $size: 1.6rem);
+  color: $color-gray;
+
+  img {
+    width: 6rem;
+    margin-bottom: 2rem;
+  }
+}

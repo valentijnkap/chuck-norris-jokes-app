@@ -19,7 +19,7 @@
             <img src="./images/content/chuck-norris.jpg" alt="Chuck Norris" />
           </figure>
           <div class="header__info">
-            <h1 class="header__title">Chuck Norrris Jokes</h1>
+            <h1 class="header__title">Chuck Norris Jokes</h1>
             <p>
               Typical Chuck Norris jokes. Find the ones you like and select your
               favorites
@@ -28,7 +28,7 @@
         </header>
         <div class="card__holder">
           <button v-on:click="getJokes" class="btn">
-            {{ randomJokes ? 'Get Jokes' : 'New Jokes' }}
+            {{ !randomJokes.length ? 'Get Jokes' : 'New Jokes' }}
           </button>
         </div>
         <div class="card__view">
@@ -41,6 +41,10 @@
               {{ randomJoke.joke }}
             </li>
           </transition-group>
+          <div v-if="!randomJokes.length" class="card__search">
+            <image src="./images/icons/search.svg" alt="icon" />
+            <p>Press the buttons to find your favorite jokes</p>
+          </div>
         </div>
       </section>
     </main>
