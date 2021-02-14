@@ -22,5 +22,5 @@ mix.browserSync({
   server: {
     baseDir: './',
   },
-  files: ['*.js', '*.scss', '*.html'],
+  files: ['*/*.js', '*/*/*.scss', '*.html', '*.css'],
 })

@@ -1,0 +1,38 @@
+$screen-mobile: screen and (min-width : 32.5em);
+$screen-tablet-portrait: screen and (min-width : 48em);
+$screen-tablet-landscape: screen and (min-width : 62em);
+$screen-desktop: screen and (min-width : 76.5em);
+$screen-desktop-large: screen and (min-width : 114em);
+$screen-max-mobile: screen and (max-width : 32.4375em);
+
+$screen-max-tablet-portrait: screen and (max-width : 47.9375em);
+$screen-max-tablet-landscape: screen and (max-width : 61.9375em);
+$screen-max-desktop: screen and (max-width : 76.4375em);
+$screen-max-desktop-large: screen and (max-width : 113.9375em);
+
+$screen-between-mobile-and-tablet-landscape: screen and (min-width : $screen-mobile) and (max-width: $screen-max-tablet-landscape);
+$screen-between-tablet-portrait-and-tablet-landscape: screen and (min-width : $screen-tablet-portrait) and (max-width: $screen-max-tablet-landscape);
+$screen-between-tablet-landscape-and-desktop: screen and (min-width: $screen-tablet-landscape) and (max-width: $screen-max-desktop);
+
+$breakpoints: (
+  'min-mobile'              : ( $screen-mobile ),
+  'min-tablet-portrait'     : ( $screen-tablet-portrait ),
+  'min-tablet-landscape'    : ( $screen-tablet-landscape ),
+  'min-desktop'             : ( $screen-desktop ),
+  'min-desktop-large'       : ( $screen-desktop-large ),
+  'max-mobile'              : ( $screen-max-mobile),
+  'max-tablet-portrait'     : ( $screen-max-tablet-portrait ),
+  'max-tablet-landscape'    : ( $screen-max-tablet-landscape ),
+  'max-desktop'             : ( $screen-max-desktop ),
+  'max-desktop-large'       : ( $screen-max-desktop-large ),
+) !default;
+
+@mixin breakpoint($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media #{inspect(map-get($breakpoints, $breakpoint))} {
+      @content;
+    }
+  } @else {
+    @warn "`#{$breakpoint}` is not a valid breakpoint, available breakpoints: #{map-keys($breakpoints)}.";
+  }
+}

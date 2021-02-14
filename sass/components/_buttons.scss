@@ -1,0 +1,19 @@
+.btn {
+  cursor: pointer;
+  background: $color-champagne;
+  @include font(
+    'work-sans',
+    $size: 1.8rem,
+    $weight: 600,
+    $transform: uppercase
+  );
+  color: $color-gray;
+  padding: 2rem 4rem;
+  border: none;
+  border-bottom: 0.6rem solid #f2deca;
+  border-radius: 0.6rem;
+
+  &:hover {
+    border-bottom: 0.2rem solid #f2deca;
+  }
+}

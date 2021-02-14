@@ -1,0 +1,37 @@
+.jokes {
+  list-style: none;
+  padding: 0;
+}
+
+.jokes__item {
+  position: relative;
+  background: $color-alabasta;
+  @include font('work-sans', $size: 1.6rem);
+  color: $color-gray;
+  padding: 2rem;
+  margin: 2rem 0 4rem;
+  border-radius: 0.3rem;
+  transition: all ease-in-out 600ms;
+
+  &:before {
+    content: '';
+    background: $color-alabasta;
+    top: -8px;
+    left: 10px;
+    width: 16px;
+    height: 16px;
+    display: block;
+    position: absolute;
+    transform: rotate(45deg);
+  }
+
+  &.v-enter,
+  &.v-leave-to {
+    opacity: 0;
+  }
+
+  &.v-enter-to,
+  &.v-leave {
+    opacity: 1;
+  }
+}

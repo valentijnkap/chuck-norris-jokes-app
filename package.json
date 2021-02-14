@@ -28,5 +28,8 @@
     "string-replace-loader": "^2.3.0",
     "vue-template-compiler": "^2.6.12"
   },
-  "dependencies": {}
+  "dependencies": {
+    "axios": "^0.21.1",
+    "vue": "^2.6.12"
+  }
 }

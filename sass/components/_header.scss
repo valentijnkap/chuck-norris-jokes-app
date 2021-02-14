@@ -1,0 +1,28 @@
+.header {
+  @include flex($justify: space-between, $align: center);
+}
+
+.header__thumb {
+  position: relative;
+  display: block;
+  width: 9rem;
+  height: 9rem;
+  border-radius: 10rem;
+  overflow: hidden;
+}
+
+.header__info {
+  @include font('work-sans', $size: 1.6rem, $lineheight: 2.8rem);
+  width: calc(100% - 12rem);
+
+  p {
+    margin: 0;
+  }
+}
+
+.header__title {
+  @include font('ranchers', $size: 2.6rem);
+  letter-spacing: 0.2rem;
+  color: $color-bay-of-many;
+  margin: 0 0 1rem;
+}

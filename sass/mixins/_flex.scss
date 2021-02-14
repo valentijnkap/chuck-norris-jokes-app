@@ -1,0 +1,36 @@
+@mixin flex($dynamicDirection: false, $breakpoint: 'min-desktop', $flex: null, $direction: null, $align: null, $justify: baseline, $wrap: null, $self: null,$important: false) {
+  @if ($flex) {
+    display: $flex;
+  } 
+  @if $important { 
+    display: flex !important;
+  } @else { 
+    display: flex;
+  }
+
+  @if ($wrap) {
+    flex-wrap: $wrap;
+  }
+  @if ($direction) {
+    flex-direction: $direction;
+  } 
+  @if ($align != null) {
+    align-items: $align;
+	} 
+	
+	@if ($self != null) {
+    align-self: $self;
+  } 
+
+  @if ($justify != baseline) {
+    justify-content: $justify;
+  } 
+
+  @if ($dynamicDirection and $breakpoint) {
+    flex-direction: column;
+
+    @include breakpoint($breakpoint) {
+      flex-direction: row
+    }
+  }
+}

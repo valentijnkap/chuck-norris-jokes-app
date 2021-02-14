@@ -1,0 +1,50 @@
+// Fonts
+$work-sans: 'Work Sans';
+$racnhers: 'Ranchers';
+
+// Fonts map
+$fonts: (
+  'work-sans': $work-sans,
+  'ranchers': $racnhers,
+) !default;
+
+// font mixin
+@mixin font(
+  $font,
+  $weight: null,
+  $size: null,
+  $transform: null,
+  $spacing: null,
+  $lineheight: null,
+  $important: null
+) {
+  @if map-has-key($fonts, $font) {
+    @if ($important==true) {
+      font-family: map-get($fonts, $font) !important;
+    } @else {
+      font-family: map-get($fonts, $font), sans-serif;
+    }
+  } @else {
+    @warn "`#{$font}` is not a valid font, available fonts: #{map-keys($fonts)}.";
+  }
+
+  @if $weight {
+    font-weight: $weight;
+  }
+
+  @if $size {
+    font-size: $size;
+  }
+
+  @if $transform {
+    text-transform: $transform;
+  }
+
+  @if $spacing {
+    letter-spacing: $spacing;
+  }
+
+  @if $lineheight {
+    line-height: $lineheight;
+  }
+}
