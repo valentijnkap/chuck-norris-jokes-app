@@ -110,7 +110,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     getJokes: function getJokes() {
       var _this = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://api.icndb.com/jokes/random/10').then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('https://api.icndb.com/jokes/random/10').then(function (response) {
         localStorage.setItem('randomJokes', JSON.stringify(response.data.value));
         _this.randomJokes = response.data.value;
       });

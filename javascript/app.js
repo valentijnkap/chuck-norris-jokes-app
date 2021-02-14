@@ -10,7 +10,7 @@ const app = new Vue({
   },
   methods: {
     getJokes() {
-      axios.get('http://api.icndb.com/jokes/random/10').then((response) => {
+      axios.get('https://api.icndb.com/jokes/random/10').then((response) => {
         localStorage.setItem('randomJokes', JSON.stringify(response.data.value))
 
         this.randomJokes = response.data.value
