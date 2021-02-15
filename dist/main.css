@@ -151,6 +151,26 @@ button:focus {
   border-bottom: 0.2rem solid #f2deca;
 }
 
+.btn--nav {
+  cursor: pointer;
+  background: transparent;
+  font-family: "Work Sans", sans-serif;
+  font-weight: 500;
+  font-size: 2rem;
+  color: #5a5a5a;
+  border: none;
+  padding: 1.5rem;
+  margin-left: 2rem;
+}
+.btn--nav.is-active:after {
+  content: "";
+  background: #5a5a5a;
+  display: block;
+  width: 40%;
+  height: 0.3rem;
+  margin: 0.5rem auto 0;
+}
+
 .card {
   background: #ffffff;
   padding: 4rem;
@@ -164,7 +184,7 @@ button:focus {
 .card__holder {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   margin: 5rem 0;
   min-height: 10rem;
 }

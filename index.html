@@ -30,8 +30,24 @@
           <button v-on:click="getJokes" class="btn">
             {{ !randomJokes.length ? 'Get Jokes' : 'New Jokes' }}
           </button>
+          <div class="card__nav">
+            <button
+              @click="toggleView"
+              class="btn--nav"
+              :class="isSearch ? 'is-active' : ''"
+            >
+              Find Jokes
+            </button>
+            <button
+              @click="toggleView"
+              class="btn--nav"
+              :class="isFavorites ? 'is-active' : ''"
+            >
+              Favorites
+            </button>
+          </div>
         </div>
-        <div class="card__view">
+        <div v-if="isSearch" class="card__view">
           <transition-group tag="ul" v-if="randomJokes" class="jokes">
             <li
               v-for="randomJoke in randomJokes"
@@ -39,12 +55,17 @@
               class="jokes__item"
             >
               {{ randomJoke.joke }}
+
+              <button @click="saveJoke(randomJoke.joke)">Save</button>
             </li>
           </transition-group>
           <div v-if="!randomJokes.length" class="card__search">
             <image src="./images/icons/search.svg" alt="icon" />
             <p>Press the buttons to find your favorite jokes</p>
           </div>
+        </div>
+        <div v-if="isFavorites" class="card__view">
+          <h1>Favorites</h1>
         </div>
       </section>
     </main>

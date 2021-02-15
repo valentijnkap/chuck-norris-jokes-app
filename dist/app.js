@@ -103,8 +103,10 @@ __webpack_require__.r(__webpack_exports__);
 
 var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   data: {
-    randomJokes: localStorage.getItem('randomJokes') ? JSON.parse(localStorage.getItem('randomJokes')) : [] //randomJokes: [],
-
+    randomJokes: localStorage.getItem('randomJokes') ? JSON.parse(localStorage.getItem('randomJokes')) : [],
+    favorites: [],
+    isSearch: true,
+    isFavorites: false
   },
   methods: {
     getJokes: function getJokes() {
@@ -114,6 +116,19 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
         localStorage.setItem('randomJokes', JSON.stringify(response.data.value));
         _this.randomJokes = response.data.value;
       });
+    },
+    toggleView: function toggleView() {
+      if (this.isSearch) {
+        this.isSearch = false;
+        this.isFavorites = true;
+      } else {
+        this.isSearch = true;
+        this.isFavorites = false;
+      }
+    },
+    saveJoke: function saveJoke(joke) {
+      this.favorites.push(joke);
+      console.log(this.favorites);
     }
   }
 });

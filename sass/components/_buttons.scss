@@ -17,3 +17,24 @@
     border-bottom: 0.2rem solid #f2deca;
   }
 }
+
+.btn--nav {
+  cursor: pointer;
+  background: transparent;
+  @include font('work-sans', $size: 2rem, $weight: 500);
+  color: $color-gray;
+  border: none;
+  padding: 1.5rem;
+  margin-left: 2rem;
+
+  &.is-active {
+    &:after {
+      content: '';
+      background: $color-gray;
+      display: block;
+      width: 40%;
+      height: 0.3rem;
+      margin: 0.5rem auto 0;
+    }
+  }
+}
