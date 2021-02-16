@@ -6,10 +6,10 @@ Vue.use(VueSvgInlinePlugin)
 
 const app = new Vue({
   data: {
-    randomJokes: localStorage.getItem('randomJokes')
-      ? JSON.parse(localStorage.getItem('randomJokes'))
+    randomJokes: [],
+    favorites: localStorage.getItem('favorites')
+      ? JSON.parse(localStorage.getItem('favorites'))
       : [],
-    favorites: [],
     isSearch: true,
     isFavorites: false,
     message: '',
@@ -17,8 +17,6 @@ const app = new Vue({
   methods: {
     getJokes() {
       axios.get('https://api.icndb.com/jokes/random/10').then(response => {
-        localStorage.setItem('randomJokes', JSON.stringify(response.data.value))
-
         this.randomJokes = response.data.value
       })
     },
@@ -33,15 +31,38 @@ const app = new Vue({
     },
     saveJoke(id, joke) {
       const searched = findJoke(id, this.favorites)
+      const jokeObj = {
+        id: id,
+        joke: joke,
+      }
 
-      if (!searched && this.favorites.length <= 10) {
-        this.favorites.push({
-          id: id,
-          joke: joke,
-        })
+      // Check if there are favorites in local storage
+      if (!localStorage.getItem('favorites')) {
+        const initialArray = [jokeObj]
+        localStorage.setItem('favorites', JSON.stringify(initialArray))
+        this.favorites = initialArray
       } else {
-        this.message =
-          'You saved this one or already saved the maximum amount of jokes'
+        // Get favorites from localstorage as a object
+        const favoritesFromStorage = JSON.parse(
+          localStorage.getItem('favorites')
+        )
+
+        // If not already saved or reached max length
+        if (!searched && this.favorites.length <= 10) {
+          // Save the joke in the original list
+          favoritesFromStorage.push(jokeObj)
+
+          // Renew the list of favorites
+          localStorage.setItem(
+            'favorites',
+            JSON.stringify(favoritesFromStorage)
+          )
+          // Update the favorite state
+          this.favorites.push(jokeObj)
+        } else {
+          this.message =
+            'You saved this one or already saved the maximum amount of jokes'
+        }
       }
     },
     checkIfSaved(id) {

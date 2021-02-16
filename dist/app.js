@@ -106,8 +106,8 @@ __webpack_require__.r(__webpack_exports__);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_svg_inline_plugin__WEBPACK_IMPORTED_MODULE_2__["default"]);
 var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   data: {
-    randomJokes: localStorage.getItem('randomJokes') ? JSON.parse(localStorage.getItem('randomJokes')) : [],
-    favorites: [],
+    randomJokes: [],
+    favorites: localStorage.getItem('favorites') ? JSON.parse(localStorage.getItem('favorites')) : [],
     isSearch: true,
     isFavorites: false,
     message: ''
@@ -117,7 +117,6 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
       var _this = this;
 
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('https://api.icndb.com/jokes/random/10').then(function (response) {
-        localStorage.setItem('randomJokes', JSON.stringify(response.data.value));
         _this.randomJokes = response.data.value;
       });
     },
@@ -132,14 +131,29 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     },
     saveJoke: function saveJoke(id, joke) {
       var searched = findJoke(id, this.favorites);
+      var jokeObj = {
+        id: id,
+        joke: joke
+      }; // Check if there are favorites in local storage
 
-      if (!searched && this.favorites.length <= 10) {
-        this.favorites.push({
-          id: id,
-          joke: joke
-        });
+      if (!localStorage.getItem('favorites')) {
+        var initialArray = [jokeObj];
+        localStorage.setItem('favorites', JSON.stringify(initialArray));
+        this.favorites = initialArray;
       } else {
-        this.message = 'You saved this one or already saved the maximum amount of jokes';
+        // Get favorites from localstorage as a object
+        var favoritesFromStorage = JSON.parse(localStorage.getItem('favorites')); // If not already saved or reached max length
+
+        if (!searched && this.favorites.length <= 10) {
+          // Save the joke in the original list
+          favoritesFromStorage.push(jokeObj); // Renew the list of favorites
+
+          localStorage.setItem('favorites', JSON.stringify(favoritesFromStorage)); // Update the favorite state
+
+          this.favorites.push(jokeObj);
+        } else {
+          this.message = 'You saved this one or already saved the maximum amount of jokes';
+        }
       }
     },
     checkIfSaved: function checkIfSaved(id) {
