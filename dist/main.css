@@ -189,9 +189,25 @@ button:focus {
   min-height: 10rem;
 }
 
+.card__message {
+  display: block;
+  font-family: "Work Sans", sans-serif;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  text-align: center;
+  margin: 2rem 0 4rem;
+}
+
 .card__view {
   width: 90%;
   margin: 0 auto;
+}
+.card__view p {
+  font-family: "Work Sans", sans-serif;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  color: #5a5a5a;
+  text-align: center;
 }
 @media (min-height: 90rem) {
   .card__view {
@@ -282,5 +298,41 @@ button:focus {
 }
 .jokes__item.v-enter-to, .jokes__item.v-leave {
   opacity: 1;
+}
+
+.jokes__bookmark {
+  cursor: pointer;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  width: 4rem;
+  height: 4rem;
+  top: -2rem;
+  right: -2rem;
+  border: none;
+  border-radius: 100px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.05);
+  transition: all ease-in-out 300ms;
+}
+.jokes__bookmark:hover {
+  transform: scale(1.2);
+}
+.jokes__bookmark svg {
+  width: 40%;
+  height: auto;
+}
+.jokes__bookmark .outline {
+  display: block;
+}
+.jokes__bookmark .fill {
+  display: none;
+}
+.jokes__bookmark.is-saved .outline {
+  display: none;
+}
+.jokes__bookmark.is-saved .fill {
+  display: block;
 }
 /*# sourceMappingURL=main.css.map*/

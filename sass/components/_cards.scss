@@ -16,9 +16,22 @@
   min-height: 10rem;
 }
 
+.card__message {
+  display: block;
+  @include font('work-sans', $size: 1.6rem, $lineheight: 2.4rem);
+  text-align: center;
+  margin: 2rem 0 4rem;
+}
+
 .card__view {
   width: 90%;
   margin: 0 auto;
+
+  p {
+    @include font('work-sans', $size: 1.6rem, $lineheight: 2.4rem);
+    color: $color-gray;
+    text-align: center;
+  }
 
   @media (min-height: 90rem) {
     max-height: 50rem;

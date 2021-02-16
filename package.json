@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
-    "vue": "^2.6.12"
+    "vue": "^2.6.12",
+    "vue-svg-inline-plugin": "^2.2.0"
   }
 }

@@ -1,5 +1,8 @@
 import Vue from 'vue'
 import axios from 'axios'
+import VueSvgInlinePlugin from 'vue-svg-inline-plugin'
+
+Vue.use(VueSvgInlinePlugin)
 
 const app = new Vue({
   data: {
@@ -9,6 +12,7 @@ const app = new Vue({
     favorites: [],
     isSearch: true,
     isFavorites: false,
+    message: '',
   },
   methods: {
     getJokes() {
@@ -27,11 +31,35 @@ const app = new Vue({
         this.isFavorites = false
       }
     },
-    saveJoke(joke) {
-      this.favorites.push(joke)
-      console.log(this.favorites)
+    saveJoke(id, joke) {
+      const searched = findJoke(id, this.favorites)
+
+      if (!searched && this.favorites.length <= 10) {
+        this.favorites.push({
+          id: id,
+          joke: joke,
+        })
+      } else {
+        this.message =
+          'You saved this one or already saved the maximum amount of jokes'
+      }
+    },
+    checkIfSaved(id) {
+      const searched = findJoke(id, this.favorites)
+
+      if (searched) {
+        return 'is-saved'
+      }
     },
   },
 })
 
 app.$mount('#app')
+
+function findJoke(id, array) {
+  for (let i = 0; i < array.length; i++) {
+    if (array[i].id === id) {
+      return array[i]
+    }
+  }
+}

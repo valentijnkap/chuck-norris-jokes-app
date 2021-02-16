@@ -47,6 +47,9 @@
             </button>
           </div>
         </div>
+        <section v-if="message != ''" class="card__message">
+          <p>{{ message }}</p>
+        </section>
         <div v-if="isSearch" class="card__view">
           <transition-group tag="ul" v-if="randomJokes" class="jokes">
             <li
@@ -56,16 +59,42 @@
             >
               {{ randomJoke.joke }}
 
-              <button @click="saveJoke(randomJoke.joke)">Save</button>
+              <button
+                @click="saveJoke(randomJoke.id, randomJoke.joke)"
+                class="jokes__bookmark"
+                :class="checkIfSaved(randomJoke.id)"
+              >
+                <img
+                  v-svg-inline
+                  src="./images/icons/bookmark-outline.svg"
+                  alt="icon"
+                  class="outline"
+                />
+                <img
+                  v-svg-inline
+                  src="./images/icons/bookmark-fill.svg"
+                  alt="icon"
+                  class="fill"
+                />
+              </button>
             </li>
           </transition-group>
           <div v-if="!randomJokes.length" class="card__search">
-            <image src="./images/icons/search.svg" alt="icon" />
+            <img v-svg-inline src="./images/icons/search.svg" alt="icon" />
             <p>Press the buttons to find your favorite jokes</p>
           </div>
         </div>
         <div v-if="isFavorites" class="card__view">
-          <h1>Favorites</h1>
+          <p v-if="!favorites.length">Find jokes and bookmark your favorites</p>
+          <transition-group tag="ul" v-if="favorites" class="jokes">
+            <li
+              v-for="favorite in favorites"
+              :key="favorite.id"
+              class="jokes__item"
+            >
+              {{ favorite.joke }}
+            </li>
+          </transition-group>
         </div>
       </section>
     </main>

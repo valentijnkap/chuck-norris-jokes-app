@@ -35,3 +35,47 @@
     opacity: 1;
   }
 }
+
+.jokes__bookmark {
+  cursor: pointer;
+  position: absolute;
+  @include flex($justify: center, $align: center);
+  background: $color-white;
+  width: 4rem;
+  height: 4rem;
+  top: -2rem;
+  right: -2rem;
+  border: none;
+  border-radius: 100px;
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.05);
+  transition: all ease-in-out 300ms;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+
+  svg {
+    width: 40%;
+    height: auto;
+  }
+
+  .outline {
+    display: block;
+  }
+
+  .fill {
+    display: none;
+  }
+
+  &.is-saved {
+    .outline {
+      display: none;
+    }
+
+    .fill {
+      display: block;
+    }
+  }
+}
