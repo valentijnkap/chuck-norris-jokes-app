@@ -108,8 +108,8 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   data: {
     randomJokes: [],
     favorites: localStorage.getItem('favorites') ? JSON.parse(localStorage.getItem('favorites')) : [],
-    isSearch: true,
-    isFavorites: false,
+    isSearch: false,
+    isFavorites: true,
     message: ''
   },
   methods: {
@@ -155,6 +155,14 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
           this.message = 'You saved this one or already saved the maximum amount of jokes';
         }
       }
+    },
+    deleteJoke: function deleteJoke(id) {
+      var oldFavorites = this.favorites;
+      var newFavorites = oldFavorites.filter(function (item) {
+        return item.id !== id;
+      });
+      this.favorites = newFavorites;
+      localStorage.setItem('favorites', JSON.stringify(newFavorites));
     },
     checkIfSaved: function checkIfSaved(id) {
       var searched = findJoke(id, this.favorites);

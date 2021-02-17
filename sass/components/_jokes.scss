@@ -36,7 +36,7 @@
   }
 }
 
-.jokes__bookmark {
+.jokes__action {
   cursor: pointer;
   position: absolute;
   @include flex($justify: center, $align: center);

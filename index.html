@@ -27,8 +27,11 @@
           </div>
         </header>
         <div class="card__holder">
-          <button v-on:click="getJokes" class="btn">
+          <button @click="getJokes" v-if="isSearch" class="btn">
             {{ !randomJokes.length ? 'Get Jokes' : 'New Jokes' }}
+          </button>
+          <button class="btn">
+            Toggle timer
           </button>
           <div class="card__nav">
             <button
@@ -61,7 +64,7 @@
 
               <button
                 @click="saveJoke(randomJoke.id, randomJoke.joke)"
-                class="jokes__bookmark"
+                class="jokes__action"
                 :class="checkIfSaved(randomJoke.id)"
               >
                 <img
@@ -93,6 +96,10 @@
               class="jokes__item"
             >
               {{ favorite.joke }}
+
+              <button class="jokes__action" @click="deleteJoke(favorite.id)">
+                <img v-svg-inline src="./images/icons/close.svg" alt="icon" />
+              </button>
             </li>
           </transition-group>
         </div>

@@ -300,7 +300,7 @@ button:focus {
   opacity: 1;
 }
 
-.jokes__bookmark {
+.jokes__action {
   cursor: pointer;
   position: absolute;
   display: flex;
@@ -316,23 +316,23 @@ button:focus {
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.05);
   transition: all ease-in-out 300ms;
 }
-.jokes__bookmark:hover {
+.jokes__action:hover {
   transform: scale(1.2);
 }
-.jokes__bookmark svg {
+.jokes__action svg {
   width: 40%;
   height: auto;
 }
-.jokes__bookmark .outline {
+.jokes__action .outline {
   display: block;
 }
-.jokes__bookmark .fill {
+.jokes__action .fill {
   display: none;
 }
-.jokes__bookmark.is-saved .outline {
+.jokes__action.is-saved .outline {
   display: none;
 }
-.jokes__bookmark.is-saved .fill {
+.jokes__action.is-saved .fill {
   display: block;
 }
 /*# sourceMappingURL=main.css.map*/

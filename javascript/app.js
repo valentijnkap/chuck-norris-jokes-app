@@ -10,8 +10,8 @@ const app = new Vue({
     favorites: localStorage.getItem('favorites')
       ? JSON.parse(localStorage.getItem('favorites'))
       : [],
-    isSearch: true,
-    isFavorites: false,
+    isSearch: false,
+    isFavorites: true,
     message: '',
   },
   methods: {
@@ -64,6 +64,16 @@ const app = new Vue({
             'You saved this one or already saved the maximum amount of jokes'
         }
       }
+    },
+    deleteJoke(id) {
+      const oldFavorites = this.favorites
+
+      const newFavorites = oldFavorites.filter(item => {
+        return item.id !== id
+      })
+
+      this.favorites = newFavorites
+      localStorage.setItem('favorites', JSON.stringify(newFavorites))
     },
     checkIfSaved(id) {
       const searched = findJoke(id, this.favorites)
