@@ -11,3 +11,11 @@ Demo can be found here [https://valentijnkap.github.io/chuck-norris-jokes-app/](
 ## Things to improve
 
 - [ ] Break down the code into components for maintainability
+
+## Running locally
+
+Install packages and run
+
+```sh
+npm run watch
+```
