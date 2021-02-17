@@ -72,13 +72,11 @@
                 :class="checkIfSaved(randomJoke.id)"
               >
                 <img
-                  v-svg-inline
                   src="./images/icons/bookmark-outline.svg"
                   alt="icon"
                   class="outline"
                 />
                 <img
-                  v-svg-inline
                   src="./images/icons/bookmark-fill.svg"
                   alt="icon"
                   class="fill"
@@ -101,7 +99,7 @@
             >
               {{ favorite.joke }}
               <button class="jokes__action" @click="deleteJoke(favorite.id)">
-                <img v-svg-inline src="./images/icons/close.svg" alt="icon" />
+                <img src="./images/icons/close.svg" alt="icon" />
               </button>
             </li>
           </transition-group>

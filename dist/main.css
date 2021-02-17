@@ -375,7 +375,8 @@ button:focus {
 .jokes__action:hover {
   transform: scale(1.2);
 }
-.jokes__action svg {
+.jokes__action svg,
+.jokes__action img {
   width: 40%;
   height: auto;
 }
