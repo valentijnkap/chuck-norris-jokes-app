@@ -98,7 +98,6 @@ const app = new Vue({
   },
   watch: {
     timer(newTimer) {
-      // if Timer is on
       if (newTimer) {
         const favorites = this.favorites
 

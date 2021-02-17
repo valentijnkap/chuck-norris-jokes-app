@@ -190,7 +190,6 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     timer: function timer(newTimer) {
       var _this2 = this;
 
-      // if Timer is on
       if (newTimer) {
         var favorites = this.favorites;
         this.interval = setInterval(function () {
