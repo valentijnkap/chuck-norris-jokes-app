@@ -50,7 +50,7 @@ const app = new Vue({
         )
 
         // If not already saved or reached max length
-        if (!searched && this.favorites.length <= 10) {
+        if (!searched && this.favorites.length < 10) {
           // Save the joke in the original list
           favoritesFromStorage.push(jokeObj)
 
@@ -69,6 +69,10 @@ const app = new Vue({
     },
     deleteJoke(id) {
       const oldFavorites = this.favorites
+
+      if (oldFavorites.length <= 10) {
+        this.message = ''
+      }
 
       const newFavorites = oldFavorites.filter(item => {
         return item.id !== id

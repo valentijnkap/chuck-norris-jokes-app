@@ -146,7 +146,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
         // Get favorites from localstorage as a object
         var favoritesFromStorage = JSON.parse(localStorage.getItem('favorites')); // If not already saved or reached max length
 
-        if (!searched && this.favorites.length <= 10) {
+        if (!searched && this.favorites.length < 10) {
           // Save the joke in the original list
           favoritesFromStorage.push(jokeObj); // Renew the list of favorites
 
@@ -160,6 +160,11 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     },
     deleteJoke: function deleteJoke(id) {
       var oldFavorites = this.favorites;
+
+      if (oldFavorites.length <= 10) {
+        this.message = '';
+      }
+
       var newFavorites = oldFavorites.filter(function (item) {
         return item.id !== id;
       });
