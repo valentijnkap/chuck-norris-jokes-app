@@ -6,6 +6,10 @@ Documentation is yet to come
 
 Demo can be found here [https://valentijnkap.github.io/chuck-norris-jokes-app/](https://valentijnkap.github.io/chuck-norris-jokes-app/)
 
-## To do's
+## Bugs to fix
 
-- [ ] Set timer to add favorite jokes until 10
+- [ ] After saving a joke the icon in favorites is not as it should be
+
+## Things to improve
+
+- [ ] Better mobile support
