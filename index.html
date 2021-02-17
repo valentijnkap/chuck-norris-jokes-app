@@ -30,8 +30,13 @@
           <button @click="getJokes" v-if="isSearch" class="btn">
             {{ !randomJokes.length ? 'Get Jokes' : 'New Jokes' }}
           </button>
-          <button class="btn">
-            Toggle timer
+          <button v-if="isFavorites" @click="setTimer" class="btn">
+            <img
+              src="./images/icons/stopwatch.svg"
+              alt="Icon"
+              class="btn__icon"
+            />
+            {{ timer ? 'fetching...' : 'Toggle timer' }}
           </button>
           <div class="card__nav">
             <button
@@ -46,7 +51,7 @@
               class="btn--nav"
               :class="isFavorites ? 'is-active' : ''"
             >
-              Favorites
+              Favorites ({{favorites.length}} / 10)
             </button>
           </div>
         </div>
@@ -61,7 +66,6 @@
               class="jokes__item"
             >
               {{ randomJoke.joke }}
-
               <button
                 @click="saveJoke(randomJoke.id, randomJoke.joke)"
                 class="jokes__action"
@@ -96,7 +100,6 @@
               class="jokes__item"
             >
               {{ favorite.joke }}
-
               <button class="jokes__action" @click="deleteJoke(favorite.id)">
                 <img v-svg-inline src="./images/icons/close.svg" alt="icon" />
               </button>

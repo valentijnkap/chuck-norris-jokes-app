@@ -13,6 +13,8 @@ const app = new Vue({
     isSearch: false,
     isFavorites: true,
     message: '',
+    timer: false,
+    interval: 0,
   },
   methods: {
     getJokes() {
@@ -80,6 +82,47 @@ const app = new Vue({
 
       if (searched) {
         return 'is-saved'
+      }
+    },
+    setTimer() {
+      if (this.timer) {
+        this.timer = false
+      } else {
+        this.timer = true
+      }
+    },
+  },
+  watch: {
+    timer(newTimer) {
+      // if Timer is on
+      if (newTimer) {
+        const favorites = this.favorites
+
+        this.interval = setInterval(() => {
+          axios.get('https://api.icndb.com/jokes/random/1').then(response => {
+            const prepareJoke = {
+              id: response.data.value[0].id,
+              joke: response.data.value[0].joke,
+            }
+
+            const searched = findJoke(response.data.value[0].id, favorites)
+
+            if (!searched) {
+              favorites.push(prepareJoke)
+
+              this.favorites = favorites
+              localStorage.setItem('favorites', JSON.stringify(favorites))
+            }
+          })
+        }, 5000)
+      } else {
+        clearInterval(this.interval)
+      }
+    },
+    favorites(newFav, oldFav) {
+      if (newFav.length >= 10) {
+        this.timer = false
+        this.message = 'Reached maximum amount of stored favorites'
       }
     },
   },

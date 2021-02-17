@@ -8,5 +8,4 @@ Demo can be found here [https://valentijnkap.github.io/chuck-norris-jokes-app/](
 
 ## To do's
 
-- [ ] Able to delete favorite jokes
 - [ ] Set timer to add favorite jokes until 10

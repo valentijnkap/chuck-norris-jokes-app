@@ -110,7 +110,9 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     favorites: localStorage.getItem('favorites') ? JSON.parse(localStorage.getItem('favorites')) : [],
     isSearch: false,
     isFavorites: true,
-    message: ''
+    message: '',
+    timer: false,
+    interval: 0
   },
   methods: {
     getJokes: function getJokes() {
@@ -169,6 +171,46 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 
       if (searched) {
         return 'is-saved';
+      }
+    },
+    setTimer: function setTimer() {
+      if (this.timer) {
+        this.timer = false;
+      } else {
+        this.timer = true;
+      }
+    }
+  },
+  watch: {
+    timer: function timer(newTimer) {
+      var _this2 = this;
+
+      // if Timer is on
+      if (newTimer) {
+        var favorites = this.favorites;
+        this.interval = setInterval(function () {
+          axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('https://api.icndb.com/jokes/random/1').then(function (response) {
+            var prepareJoke = {
+              id: response.data.value[0].id,
+              joke: response.data.value[0].joke
+            };
+            var searched = findJoke(response.data.value[0].id, favorites);
+
+            if (!searched) {
+              favorites.push(prepareJoke);
+              _this2.favorites = favorites;
+              localStorage.setItem('favorites', JSON.stringify(favorites));
+            }
+          });
+        }, 5000);
+      } else {
+        clearInterval(this.interval);
+      }
+    },
+    favorites: function favorites(newFav, oldFav) {
+      if (newFav.length >= 10) {
+        this.timer = false;
+        this.message = 'Reached maximum amount of stored favorites';
       }
     }
   }

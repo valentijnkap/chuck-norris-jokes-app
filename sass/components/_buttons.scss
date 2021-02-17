@@ -1,5 +1,6 @@
 .btn {
   cursor: pointer;
+  @include flex($justify: center, $align: center);
   background: $color-champagne;
   @include font(
     'work-sans',
@@ -37,4 +38,10 @@
       margin: 0.5rem auto 0;
     }
   }
+}
+
+.btn__icon {
+  width: 2rem;
+  height: auto;
+  margin-right: 1.5rem;
 }

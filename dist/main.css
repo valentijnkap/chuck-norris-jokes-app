@@ -136,6 +136,9 @@ button:focus {
 
 .btn {
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: #fae7d4;
   font-family: "Work Sans", sans-serif;
   font-weight: 600;
@@ -169,6 +172,12 @@ button:focus {
   width: 40%;
   height: 0.3rem;
   margin: 0.5rem auto 0;
+}
+
+.btn__icon {
+  width: 2rem;
+  height: auto;
+  margin-right: 1.5rem;
 }
 
 .card {
