@@ -153,6 +153,16 @@ button:focus {
 .btn:hover {
   border-bottom: 0.2rem solid #f2deca;
 }
+@media (max-width: 47.9375em) {
+  .btn {
+    font-size: 1.6rem;
+  }
+}
+@media (max-width: 32.4375em) {
+  .btn {
+    font-size: 1.4rem;
+  }
+}
 
 .btn--nav {
   cursor: pointer;
@@ -164,6 +174,11 @@ button:focus {
   border: none;
   padding: 1.5rem;
   margin-left: 2rem;
+}
+@media (max-width: 32.4375em) {
+  .btn--nav {
+    font-size: 1.6rem;
+  }
 }
 .btn--nav.is-active:after {
   content: "";
@@ -189,6 +204,11 @@ button:focus {
   border-radius: 0.6rem;
   box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.05);
 }
+@media (max-width: 47.9375em) {
+  .card {
+    padding: 2rem;
+  }
+}
 
 .card__holder {
   display: flex;
@@ -196,6 +216,11 @@ button:focus {
   justify-content: space-between;
   margin: 5rem 0;
   min-height: 10rem;
+}
+@media (max-width: 61.9375em) {
+  .card__holder {
+    flex-direction: column;
+  }
 }
 
 .card__message {
@@ -205,6 +230,12 @@ button:focus {
   line-height: 2.4rem;
   text-align: center;
   margin: 2rem 0 4rem;
+}
+
+@media (max-width: 61.9375em) {
+  .card__nav {
+    margin-top: 4rem;
+  }
 }
 
 .card__view {
@@ -247,6 +278,11 @@ button:focus {
   align-items: center;
   justify-content: space-between;
 }
+@media (max-width: 32.4375em) {
+  .header {
+    flex-direction: column;
+  }
+}
 
 .header__thumb {
   position: relative;
@@ -256,12 +292,23 @@ button:focus {
   border-radius: 10rem;
   overflow: hidden;
 }
+@media (max-width: 32.4375em) {
+  .header__thumb {
+    margin-bottom: 3rem;
+  }
+}
 
 .header__info {
   font-family: "Work Sans", sans-serif;
   font-size: 1.6rem;
   line-height: 2.8rem;
   width: calc(100% - 12rem);
+}
+@media (max-width: 32.4375em) {
+  .header__info {
+    width: 90%;
+    text-align: center;
+  }
 }
 .header__info p {
   margin: 0;

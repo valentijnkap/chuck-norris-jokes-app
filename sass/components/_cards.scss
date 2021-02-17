@@ -8,12 +8,20 @@
   -webkit-box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.05);
   -moz-box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.05);
   box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.05);
+
+  @include breakpoint('max-tablet-portrait') {
+    padding: 2rem;
+  }
 }
 
 .card__holder {
   @include flex($justify: space-between, $align: center);
   margin: 5rem 0;
   min-height: 10rem;
+
+  @include breakpoint('max-tablet-landscape') {
+    flex-direction: column;
+  }
 }
 
 .card__message {
@@ -21,6 +29,12 @@
   @include font('work-sans', $size: 1.6rem, $lineheight: 2.4rem);
   text-align: center;
   margin: 2rem 0 4rem;
+}
+
+.card__nav {
+  @include breakpoint('max-tablet-landscape') {
+    margin-top: 4rem;
+  }
 }
 
 .card__view {

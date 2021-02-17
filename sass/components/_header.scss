@@ -1,5 +1,9 @@
 .header {
   @include flex($justify: space-between, $align: center);
+
+  @include breakpoint('max-mobile') {
+    flex-direction: column;
+  }
 }
 
 .header__thumb {
@@ -9,11 +13,20 @@
   height: 9rem;
   border-radius: 10rem;
   overflow: hidden;
+
+  @include breakpoint('max-mobile') {
+    margin-bottom: 3rem;
+  }
 }
 
 .header__info {
   @include font('work-sans', $size: 1.6rem, $lineheight: 2.8rem);
   width: calc(100% - 12rem);
+
+  @include breakpoint('max-mobile') {
+    width: 90%;
+    text-align: center;
+  }
 
   p {
     margin: 0;
